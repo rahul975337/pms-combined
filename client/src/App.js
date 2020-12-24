@@ -1,7 +1,4 @@
 import "./App.css";
-import Contact from "./components/Contact/Contact";
-import Footer from "./components/Footer/Footer";
-import Hero from "./components/Hero/Hero";
 import Login from "./Pages/Login/Login";
 import Nav from "./components/Nav/Nav";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";

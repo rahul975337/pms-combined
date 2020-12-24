@@ -8,9 +8,9 @@ function Hero() {
         <h1 className="animate-hero">JSSATE</h1>
         <p className="animate-hero">Placement Management System</p>
 
-        <Link to="/login" className="button animate-hero">
+        {/* <Link to="/login" className="button animate-hero">
           Signin
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

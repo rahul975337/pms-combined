@@ -8,7 +8,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Axios from "axios";
-import { Button, colors, withTheme } from "@material-ui/core";
 import "./Placements.css";
 const useStyles = makeStyles({
   table: {
@@ -41,7 +40,7 @@ function Placements() {
   };
   useEffect(() => {
     getPlacements();
-  }, []);
+  });
   return (
     <div className="placements_page">
       <TableContainer component={Paper}>

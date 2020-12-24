@@ -3,6 +3,7 @@ const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
 ////////////
+//cors helps in sending crossplatform information lije from frontend to backend
 app.use(cors());
 app.use(express.json());
 const db = mysql.createConnection({
@@ -33,6 +34,26 @@ app.get("/placements", (req, res) => {
       res.send(result);
     }
   });
+});
+// ///////////////////ROUTE FOR LOGIN /////////////
+app.post("/login", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  db.query(
+    "SELECT * FROM users WHERE username = ? AND password = ?",
+    [username, password],
+    (err, result) => {
+      if (err) {
+        res.send({ err: err });
+      }
+      if (result.length > 0) {
+        res.send(result);
+      } else {
+        res.send({ message: "Wrong username/password combination" });
+      }
+    }
+  );
 });
 /////////////////////S E R V E R   P O R T SETUP///////////////
 app.listen(3001, () => {

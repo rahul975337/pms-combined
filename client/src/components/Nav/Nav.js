@@ -1,10 +1,20 @@
+import { Button } from "@material-ui/core";
 import React from "react";
 import { FaUniversity } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { actionTypes } from "../../reducer";
+import { useStateValue } from "../../StateProvider";
 
 import "./Nav.css";
 
 function Nav() {
+  const [state, dispatch] = useStateValue();
+  const logout = () => {
+    dispatch({
+      type: actionTypes.SET_USER,
+      user: null,
+    });
+  };
   return (
     <nav className="navbar">
       <Link to="/" className="navbar_logo">
@@ -28,7 +38,11 @@ function Nav() {
           Placements
         </Link>
       </li>
-      {/* </div> */}
+      <li>
+        <btn className="logout-btn" onClick={logout}>
+          Logout
+        </btn>
+      </li>
       <div></div>
     </nav>
   );

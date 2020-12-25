@@ -49,7 +49,7 @@ body {
   left: 0;
   padding: 10px 0;
   font-size: 16px;
-  color: var(--white);
+  color: var(--red);
   pointer-events: none;
   transition: 0.5s;
 }
@@ -82,6 +82,7 @@ body {
   border-radius: 5px;
   box-shadow: 0 0 5px var(--red), 0 0 25pxvar (--red), 0 0 50px var(--red),
     0 0 100px var(--red);
+  cursor: pointer;
 }
 
 .login-box btn span {

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { Route } from "react-router";
-import { Link } from "react-router-dom";
 import "./Login.css";
 import Axios from "axios";
-import { useStateValue } from "../../StateProvider";
-import { actionTypes } from "../../reducer";
-import { Button } from "@material-ui/core";
-
+import { useStateValue } from "../../Context/StateProvider";
+import { actionTypes } from "../../Context/reducer";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -20,7 +18,7 @@ function Login() {
       password: password,
     }).then((response) => {
       if (response.data.message) {
-        setIsLoggedIn(false);
+        return toast("Invalid Username/Password", { type: "error" });
       } else {
         dispatch({
           type: actionTypes.SET_USER,
@@ -32,13 +30,14 @@ function Login() {
 
   return (
     <div className="login-box">
+      <ToastContainer position="bottom-left" />
       <h2>Login</h2>
       <form>
         <div className="user-box">
           <input
             type="text"
             name=""
-            required=""
+            required="true"
             onChange={(e) => setUsername(e.target.value)}
           />
           <label>Username</label>
@@ -47,7 +46,7 @@ function Login() {
           <input
             type="password"
             name=""
-            required=""
+            required="true"
             onChange={(e) => setPassword(e.target.value)}
           />
           <label>Password</label>

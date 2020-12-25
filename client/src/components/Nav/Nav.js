@@ -1,9 +1,8 @@
-import { Button } from "@material-ui/core";
 import React from "react";
 import { FaUniversity } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { actionTypes } from "../../reducer";
-import { useStateValue } from "../../StateProvider";
+import { actionTypes } from "../../Context/reducer";
+import { useStateValue } from "../../Context/StateProvider";
 
 import "./Nav.css";
 
@@ -22,7 +21,6 @@ function Nav() {
         <FaUniversity style={{ color: "#f9032f", margin: "2px" }} />
       </Link>
 
-      {/* <div className="navbar_menu"> */}
       <li>
         <Link to="/" className="navbar_link">
           Home

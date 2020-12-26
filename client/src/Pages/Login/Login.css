@@ -8,17 +8,22 @@ body {
   background: linear-gradient(rgba(0, 0, 0, 4), rgba(0, 0, 0, 4));
 }
 .login-page {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-evenly; */
 }
-.login-box-2 {
-  left: 80%;
+.tablist {
+  color: white;
+  background: transparent;
+  transition: 0.3s ease-in;
+}
+.tablist--selected {
+  background: blue;
 }
 .login-box {
   position: absolute;
-  /* top: 50%;
-  left: 50%; */
+  top: 50%;
+  left: 50%;
   top: 50%;
   width: 400px;
   padding: 40px;

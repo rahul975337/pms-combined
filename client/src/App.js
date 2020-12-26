@@ -12,11 +12,12 @@ function App() {
 
   return (
     <>
-      {!user ? (
+      {!user || user === "" ? (
         <Login />
       ) : (
         <Router>
           <Nav />
+
           <Switch>
             <Route exact path="/">
               <Home />

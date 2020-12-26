@@ -7,7 +7,9 @@ body {
   font-family: sans-serif;
   background: linear-gradient(rgba(0, 0, 0, 4), rgba(0, 0, 0, 4));
 }
-
+.login-page {
+  display: flex;
+}
 .login-box {
   position: absolute;
   top: 50%;
@@ -62,18 +64,22 @@ body {
   font-size: 12px;
 }
 
-.login-box form btn {
+.login-box btn {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
   color: var(--red);
+  background: var(--black);
   font-size: 16px;
   text-decoration: none;
   text-transform: uppercase;
   overflow: hidden;
   transition: 0.5s;
   margin-top: 40px;
+  outline: none;
   letter-spacing: 4px;
+  margin-right: 20px;
+  border: none;
 }
 
 .login-box btn:hover {
@@ -116,7 +122,7 @@ body {
   height: 100%;
   background: linear-gradient(180deg, transparent, var(--red));
   animation: btn-anim2 1s linear infinite;
-  animation-delay: 0.25s;
+  animation-delay: 0.5s;
 }
 
 @keyframes btn-anim2 {

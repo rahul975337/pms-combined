@@ -35,7 +35,30 @@ app.get("/placements", (req, res) => {
     }
   });
 });
-// ///////////////////ROUTE FOR LOGIN /////////////
+/ /; //////////////////ROUTE FOR REGISTERATION /////////////
+app.post("/register", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  db.query(
+    "INSERT INTO users (username,password) VALUES (?,?)",
+    [username, password],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+        res.send({ err: err });
+        // res.send({ message: "Wrong username/password combination" });
+      }
+      if (result.length > 0) {
+        res.send(result);
+      } else {
+        res.send({ message: "already exists" });
+      }
+    }
+  );
+});
+
+/////////////////////ROUTE FOR LOGIN /////////////
 app.post("/login", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;

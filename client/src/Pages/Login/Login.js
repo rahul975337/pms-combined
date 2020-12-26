@@ -8,6 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [usernameReg, setUsernameReg] = useState("");
+  const [passwordReg, setPasswordReg] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const baseUrl = "http://localhost:3001";
   const [state, dispatch] = useStateValue();
@@ -27,38 +29,85 @@ function Login() {
       }
     });
   };
+  const register = () => {
+    Axios.post(`${baseUrl}/register`, {
+      username: usernameReg,
+      password: passwordReg,
+    })
+      .then((response) => {
+        if (response.data.message) {
+          return toast(" User already exists", { type: "error" });
+        }
+        // if (response.data.err) {
+        //   return toast(" User already exists", { type: "error" });
+        // }
+      })
+      .catch(toast(" User already exists", { type: "error" }));
+  };
 
   return (
-    <div className="login-box">
+    <div className="login-page">
       <ToastContainer position="bottom-left" />
-      <h2>Login</h2>
-      <form>
-        <div className="user-box">
-          <input
-            type="text"
-            name=""
-            required="true"
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <label>Username</label>
-        </div>
-        <div className="user-box">
-          <input
-            type="password"
-            name=""
-            required="true"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <label>Password</label>
-        </div>
-        <btn className="login-btn" onClick={login}>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          Login
-        </btn>
-      </form>
+      <div className="login-box">
+        <h2>Login</h2>
+        <form>
+          <div className="user-box">
+            <input
+              type="text"
+              required="true"
+              name=""
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <label>Username</label>
+          </div>
+          <div className="user-box">
+            <input
+              type="password"
+              name=""
+              required="true"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <label>Password</label>
+          </div>
+          <btn className="login-btn" onClick={login}>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Login
+          </btn>
+        </form>
+      </div>
+      <div className="login-box">
+        <h2>Register</h2>
+        <form>
+          <div className="user-box">
+            <input
+              type="text"
+              name=""
+              required="true"
+              onChange={(e) => setUsernameReg(e.target.value)}
+            />
+            <label>Username</label>
+          </div>
+          <div className="user-box">
+            <input
+              type="password"
+              name=""
+              required="true"
+              onChange={(e) => setPasswordReg(e.target.value)}
+            />
+            <label>Password</label>
+          </div>
+          <btn className="login-btn" onClick={register}>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Register
+          </btn>
+        </form>
+      </div>
     </div>
   );
 }

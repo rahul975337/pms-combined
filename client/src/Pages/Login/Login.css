@@ -9,11 +9,17 @@ body {
 }
 .login-page {
   display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.login-box-2 {
+  left: 80%;
 }
 .login-box {
   position: absolute;
+  /* top: 50%;
+  left: 50%; */
   top: 50%;
-  left: 50%;
   width: 400px;
   padding: 40px;
   transform: translate(-50%, -50%);

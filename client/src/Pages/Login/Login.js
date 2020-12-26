@@ -5,6 +5,8 @@ import { useStateValue } from "../../Context/StateProvider";
 import { actionTypes } from "../../Context/reducer";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -48,7 +50,7 @@ function Login() {
   return (
     <div className="login-page">
       <ToastContainer position="bottom-left" />
-      <div className="login-box">
+      <div className=" login-box login-box-1">
         <h2>Login</h2>
         <form>
           <div className="user-box">
@@ -78,7 +80,7 @@ function Login() {
           </btn>
         </form>
       </div>
-      <div className="login-box">
+      <div className="login-box login-box-2">
         <h2>Register</h2>
         <form>
           <div className="user-box">

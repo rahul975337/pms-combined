@@ -10,25 +10,92 @@ function Footer() {
           <p id="phone">305 - 123 - 4567</p>
         </div>
         <div className="footer_links">
-          <h2 className="footer_title">Contact Us</h2>
-          <p className="footer_link">Contact</p>
-          <p className="footer_link">Support</p>
-          <p className="footer_link">Sponsorships</p>
+          <h2 className="footer_title">About JSSATE</h2>
+          <a
+            href="https://jssateb.ac.in/faculty-list/"
+            target="blank"
+            className="footer_link"
+          >
+            Faculty List of All Dept
+          </a>
+          <a
+            href="https://jssateb.ac.in/nirf-details/"
+            target="blank"
+            className="footer_link"
+          >
+            NIRF Details
+          </a>
+          <a
+            href="https://jssateb.ac.in/campus-life/clubs/verve/"
+            target="blank"
+            className="footer_link"
+          >
+            VERVE
+          </a>
+          <a
+            href="https://jssateb.ac.in/admission/"
+            target="blank"
+            className="footer_link"
+          >
+            Admission
+          </a>
         </div>
       </div>
       <div id="footer" className="footer_wrapper">
         <div className="footer_links">
-          <h2 className="footer_title">People</h2>
-          <p className="footer_link">Alumni Survey</p>
-          <p className="footer_link">Alumni</p>
-          <p className="footer_link">Women Cell</p>
+          <h2 className="footer_title">Placements</h2>
+          <a
+            href="https://jssateb.ac.in/placements/"
+            target="blank"
+            className="footer_link"
+          >
+            Placements
+          </a>
+          <a
+            href="https://jssateb.ac.in/placements/campus-placement/"
+            target="blank"
+            className="footer_link"
+          >
+            Campus Placements
+          </a>
+          <a
+            href="https://jssateb.ac.in/placements/additional-placements/"
+            target="blank"
+            className="footer_link"
+          >
+            Additional Placements
+          </a>
         </div>
         <div className="footer_links">
-          <h2 className="footer_title">Social Media</h2>
-          <p className="footer_link">Instagram</p>
-          <p className="footer_link">Facebook</p>
-          <p className="footer_link">Youtube</p>
-          <p className="footer_link">Twitter</p>
+          <h2 className="footer_title">Get in Touch</h2>
+          <a
+            href="https://jssateb.ac.in/"
+            target="blank"
+            className="footer_link"
+          >
+            JSSATEB
+          </a>
+          <a
+            href="https://www.facebook.com/JSSATEBlore"
+            target="blank"
+            className="footer_link"
+          >
+            Facebook
+          </a>
+          <a
+            href="https://www.youtube.com/watch?v=MRw-MADIXe0"
+            target="blank"
+            className="footer_link"
+          >
+            Youtube
+          </a>
+          <a
+            href="https://twitter.com/jssateb"
+            target="blank"
+            className="footer_link"
+          >
+            Twitter
+          </a>
         </div>
       </div>
     </div>

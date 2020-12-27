@@ -111,8 +111,8 @@ function Login() {
         return toast("Invalid Username/Password", { type: "error" });
       } else {
         dispatch({
-          type: actionTypes.SET_USER,
-          user: response.data,
+          type: actionTypes.SET_ADMIN,
+          admin: response.data,
         });
       }
     });

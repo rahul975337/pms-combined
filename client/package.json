@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.6.0",
     "axios": "^0.21.1",
     "react": "^17.0.1",
+    "react-animated-modal": "^1.1.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
     "react-router": "^5.2.0",

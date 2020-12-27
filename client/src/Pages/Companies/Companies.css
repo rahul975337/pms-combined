@@ -1,3 +1,30 @@
 .companies_page {
   padding: 10px;
 }
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: var(--red);
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  /* box-shadow: 2px 2px 3px rgb(90, 72, 72); */
+}
+
+.my-float {
+  margin-top: 22px;
+}
+.modal {
+  color: white;
+  /* background: red; */
+  height: 50%;
+  width: 50%;
+  border-radius: 20px;
+  padding: 20px;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+}

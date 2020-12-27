@@ -9,6 +9,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Axios from "axios";
 import "./Placements.css";
+import { FaPlus } from "react-icons/fa";
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -37,6 +38,9 @@ function Placements() {
     Axios.get(`${baseUrl}/placements`).then((response) => {
       setPlacementsList(response.data);
     });
+  };
+  const addPlacement = () => {
+    alert("hey");
   };
   useEffect(() => {
     getPlacements();
@@ -98,6 +102,9 @@ function Placements() {
           </TableBody>
         </Table>
       </TableContainer>
+      <div href="#" class="float" onClick={addPlacement}>
+        <FaPlus className="my-float" />
+      </div>
     </div>
   );
 }

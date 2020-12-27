@@ -9,6 +9,9 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Axios from "axios";
 import "./Companies.css";
+import { FaPlus } from "react-icons/fa";
+import { Modal } from "@material-ui/core";
+import AddCompany from "./AddCompany";
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -22,6 +25,7 @@ const useStyles = makeStyles({
     color: "white",
     background: "black",
     fontSize: 13,
+    // border:'none'
   },
   tableBack: {
     backgroundColor: "black",
@@ -32,15 +36,28 @@ function Companies() {
   const classes = useStyles();
   const [companiesList, setCompaniesList] = useState([]);
   const baseUrl = "http://localhost:3001";
+  // const [modalStyle] = useState(getModalStyle);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   //////////////////GET REQUEST TO SHOW/READ DATA//////////////
   const getCompanies = () => {
     Axios.get(`${baseUrl}/companies`).then((response) => {
       setCompaniesList(response.data);
     });
   };
+  const addCompany = () => {
+    alert("hey");
+  };
   useEffect(() => {
     getCompanies();
   });
+
   return (
     <div className="companies_page">
       <TableContainer component={Paper}>
@@ -91,6 +108,19 @@ function Companies() {
           </TableBody>
         </Table>
       </TableContainer>
+
+      <div class="float" onClick={handleOpen}>
+        <FaPlus className="my-float" />
+      </div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        className="modal"
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        <AddCompany />
+      </Modal>
     </div>
   );
 }

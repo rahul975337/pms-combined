@@ -3,15 +3,19 @@ import { FaUniversity } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { actionTypes } from "../../Context/reducer";
 import { useStateValue } from "../../Context/StateProvider";
-
 import "./Nav.css";
 
 function Nav() {
-  const [state, dispatch] = useStateValue();
+  const [user, dispatchUser] = useStateValue();
+  const [admin, dispatchAdmin] = useStateValue();
   const logout = () => {
-    dispatch({
+    dispatchUser({
       type: actionTypes.SET_USER,
       user: null,
+    });
+    dispatchAdmin({
+      type: actionTypes.SET_ADMIN,
+      admin: null,
     });
   };
   return (

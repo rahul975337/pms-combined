@@ -1,21 +1,22 @@
 import Axios from "axios";
 import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
-import "./AddCompany.css";
-function AddCompany() {
+import "./AddPlacement.css";
+function AddPlacement() {
   const [name, setName] = useState("");
-  const [website, seWebsite] = useState("");
+  const [batch, setBatch] = useState("");
+  const [cgpa, setCgpa] = useState(0);
+  const [company, setCompany] = useState("");
   const [salary, setSalary] = useState("");
-  const [eligibility, setEligibility] = useState(0);
   const [position, setPosition] = useState("");
   const baseUrl = "http://localhost:3001";
-
-  const addCompany = ({ handleOpen }) => {
-    Axios.post(`${baseUrl}/addcompany`, {
+  const addPlacement = ({ handleOpen }) => {
+    Axios.post(`${baseUrl}/addplacement`, {
       name: name,
-      website: website,
+      batch: batch,
+      cgpa: cgpa,
+      company: company,
       salary: salary,
-      eligibility: eligibility,
       position: position,
     }).then((response) => {
       // if (response.data.message) {
@@ -27,47 +28,56 @@ function AddCompany() {
     });
   };
   return (
-    <div className=" add-company-box">
+    <div className=" add-placement-box">
       <ToastContainer position="bottom-center" />
-      <h2>Add a company</h2>
+      <h2>Add a placement</h2>
       <form>
-        <div className="add-company-form">
+        <div className="add-placement-form">
           <input
             type="text"
             required="true"
             name=""
             onChange={(e) => setName(e.target.value)}
           />
-          <label>Company Name</label>
+          <label>Student Name</label>
         </div>
-        <div className="add-company-form">
+        <div className="add-placement-form">
           <input
             type="text"
             required="true"
             name=""
-            onChange={(e) => seWebsite(e.target.value)}
+            onChange={(e) => setBatch(e.target.value)}
           />
-          <label>Website</label>
+          <label>Batch</label>
         </div>
-        <div className="add-company-form">
+        <div className="add-placement-form">
           <input
             type="text"
             required="true"
             name=""
+            onChange={(e) => setCgpa(e.target.value)}
+          />
+          <label>CGPA</label>
+        </div>
+        <div className="add-placement-form">
+          <input
+            type="text"
+            required="true"
+            name=""
+            onChange={(e) => setCompany(e.target.value)}
+          />
+          <label>Company</label>
+        </div>
+        <div className="add-placement-form">
+          <input
+            type="text"
+            name=""
+            required="true"
             onChange={(e) => setSalary(e.target.value)}
           />
           <label>Salary</label>
         </div>
-        <div className="add-company-form">
-          <input
-            type="text"
-            required="true"
-            name=""
-            onChange={(e) => setEligibility(e.target.value)}
-          />
-          <label>Eligibility</label>
-        </div>
-        <div className="add-company-form">
+        <div className="add-placement-form">
           <input
             type="text"
             name=""
@@ -76,10 +86,10 @@ function AddCompany() {
           />
           <label>Position</label>
         </div>
-        <btn onClick={addCompany}>Submit</btn>
+        <btn onClick={addPlacement}>Submit</btn>
       </form>
     </div>
   );
 }
 
-export default AddCompany;
+export default AddPlacement;

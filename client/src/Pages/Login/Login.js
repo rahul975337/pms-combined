@@ -61,11 +61,14 @@ const useStyles = makeStyles((theme) => ({
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [adminUsername, setAdminUsername] = useState("");
+  const [adminPassword, setAdminPassword] = useState("");
   const [usernameReg, setUsernameReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const baseUrl = "http://localhost:3001";
-  const [state, dispatch] = useStateValue();
+  const [{ userState }, dispatchUser] = useStateValue();
+  const [{ adminState }, dispatchAdmin] = useStateValue();
   const classes = useStyles();
   const [value, setValue] = useState(0);
 
@@ -81,7 +84,7 @@ function Login() {
       if (response.data.message) {
         return toast("Invalid Username/Password", { type: "error" });
       } else {
-        dispatch({
+        dispatchUser({
           type: actionTypes.SET_USER,
           user: response.data,
         });
@@ -93,16 +96,25 @@ function Login() {
       username: usernameReg,
       password: passwordReg,
     }).then((response) => {
-      // if (response.data.message) {
-      //   return toast(" User already exists", { type: "error" });
+      // if (response.data) {
+      //   return toast(" Succesfully Registered", { type: "success" });
       // }
+
       if (response.data.err) {
         return toast(" User already exists", { type: "error" });
+      } else if (response.data.message) {
+        return toast("", { type: "error" });
+      } else if (response.data) {
+        console.log("====================================");
+        console.log(response.data);
+        console.log("====================================");
+        return toast(" Succesfully Registered", { type: "success" });
       }
+      // return toast(" Succesfully Registered", { type: "success" });
     });
   };
 
-  const admin = () => {
+  const adminLogin = () => {
     Axios.post(`${baseUrl}/admin`, {
       username: username,
       password: password,
@@ -110,7 +122,7 @@ function Login() {
       if (response.data.message) {
         return toast("Invalid Username/Password", { type: "error" });
       } else {
-        dispatch({
+        dispatchAdmin({
           type: actionTypes.SET_ADMIN,
           admin: response.data,
         });
@@ -220,7 +232,7 @@ function Login() {
               />
               <label>Password</label>
             </div>
-            <btn className="login-btn" onClick={admin}>
+            <btn className="login-btn" onClick={adminLogin}>
               <span></span>
               <span></span>
               <span></span>

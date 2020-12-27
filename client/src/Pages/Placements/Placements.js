@@ -10,6 +10,10 @@ import Paper from "@material-ui/core/Paper";
 import Axios from "axios";
 import "./Placements.css";
 import { FaPlus } from "react-icons/fa";
+import { useStateValue } from "../../Context/StateProvider";
+import { Modal } from "@material-ui/core";
+import AddPlacement from "./AddPlacement";
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -33,15 +37,24 @@ function Placements() {
   const classes = useStyles();
   const [placementsList, setPlacementsList] = useState([]);
   const baseUrl = "http://localhost:3001";
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const [{ admin }, dispatchAdmin] = useStateValue();
+
   //////////////////GET REQUEST TO SHOW/READ DATA//////////////
   const getPlacements = () => {
     Axios.get(`${baseUrl}/placements`).then((response) => {
       setPlacementsList(response.data);
     });
   };
-  const addPlacement = () => {
-    alert("hey");
-  };
+
   useEffect(() => {
     getPlacements();
   });
@@ -64,7 +77,7 @@ function Placements() {
                 Company
               </TableCell>
               <TableCell className={classes.tableHeading} align="left">
-                Package
+                Salary
               </TableCell>
 
               <TableCell className={classes.tableHeading} align="left">
@@ -92,7 +105,7 @@ function Placements() {
                   {placement.company}
                 </TableCell>
                 <TableCell className={classes.tableData} align="left">
-                  {placement.package}
+                  {placement.salary}
                 </TableCell>
                 <TableCell className={classes.tableData} align="left">
                   {placement.position}
@@ -102,9 +115,22 @@ function Placements() {
           </TableBody>
         </Table>
       </TableContainer>
-      <div href="#" class="float" onClick={addPlacement}>
-        <FaPlus className="my-float" />
-      </div>
+      {!admin || admin === "" ? null : (
+        <>
+          <div class="float" onClick={handleOpen}>
+            <FaPlus className="my-float" />
+          </div>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            className="modal"
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+          >
+            <AddPlacement isOpen={handleOpen} />
+          </Modal>
+        </>
+      )}
     </div>
   );
 }

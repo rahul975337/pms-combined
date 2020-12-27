@@ -46,10 +46,12 @@ app.post("/register", (req, res) => {
     (err, result) => {
       if (err) {
         console.log(err);
+
         res.send({ err: err });
+        return;
         // res.send({ message: "Wrong username/password combination" });
       }
-      if (result.length > 0) {
+      if (result) {
         res.send(result);
       } else {
         res.send({ message: "already exists" });
@@ -95,6 +97,59 @@ app.post("/admin", (req, res) => {
         res.send(result);
       } else {
         res.send({ message: "Wrong username/password combination" });
+      }
+    }
+  );
+});
+
+/////////////////////ROUTE FOR ADD COMPANIES /////////////
+app.post("/addcompany", (req, res) => {
+  const name = req.body.name;
+  const website = req.body.website;
+  const salary = req.body.salary;
+  const eligibility = req.body.eligibility;
+  const position = req.body.position;
+
+  db.query(
+    "INSERT INTO companies (name,website,salary,eligibility,position) VALUES (?,?,?,?,?)",
+    [name, website, salary, eligibility, position],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+        res.send({ err: err });
+        // res.send({ message: "Wrong username/password combination" });
+      }
+      if (result.length > 0) {
+        res.send(result);
+      } else {
+        res.send({ message: "already exists" });
+      }
+    }
+  );
+});
+
+/////////////////////ROUTE FOR ADD PLACEMENTS /////////////
+app.post("/addplacement", (req, res) => {
+  const name = req.body.name;
+  const batch = req.body.batch;
+  const cgpa = req.body.cgpa;
+  const company = req.body.company;
+  const salary = req.body.salary;
+  const position = req.body.position;
+
+  db.query(
+    "INSERT INTO placements (name,batch,cgpa,company,salary,position) VALUES (?,?,?,?,?,?)",
+    [name, batch, cgpa, company, salary, position],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+        res.send({ err: err });
+        // res.send({ message: "Wrong username/password combination" });
+      }
+      if (result.length > 0) {
+        res.send(result);
+      } else {
+        res.send({ message: "already exists" });
       }
     }
   );

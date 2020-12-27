@@ -8,11 +8,12 @@ import Placements from "./Pages/Placements/Placements";
 import { useStateValue } from "./Context/StateProvider";
 
 function App() {
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user }, dispatchUser] = useStateValue();
+  const [{ admin }, dispatchAdmin] = useStateValue();
 
   return (
     <>
-      {!user || user === "" ? (
+      {!admin && !user ? (
         <Login />
       ) : (
         <Router>

@@ -1,4 +1,4 @@
-.add-company-box {
+.add-placement-box {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -12,18 +12,18 @@
   border-radius: 10px;
 }
 
-.add-company-box h2 {
+.add-placement-box h2 {
   margin: 0 0 30px;
   padding: 0;
   color: var(--white);
   text-align: center;
 }
 
-.add-company-box .add-company-form {
+.add-placement-box .add-placement-form {
   position: relative;
 }
 
-.add-company-box .add-company-form input {
+.add-placement-box .add-placement-form input {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
@@ -34,7 +34,7 @@
   outline: none;
   background: transparent;
 }
-.add-company-box .add-company-form label {
+.add-placement-box .add-placement-form label {
   position: absolute;
   top: 0;
   left: 0;
@@ -45,15 +45,15 @@
   transition: 0.5s;
 }
 
-.add-company-box .add-company-form input:focus ~ label,
-.add-company-box .add-company-form input:valid ~ label {
+.add-placement-box .add-placement-form input:focus ~ label,
+.add-placement-box .add-placement-form input:valid ~ label {
   top: -20px;
   left: 0;
   color: var(--red);
   font-size: 12px;
 }
 
-.add-company-box btn {
+.add-placement-box btn {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -72,7 +72,7 @@
   border-radius: 5px;
 }
 
-.add-company-box btn:hover {
+.add-placement-box btn:hover {
   background: var(--red);
   color: var(--white);
   border-radius: 5px;

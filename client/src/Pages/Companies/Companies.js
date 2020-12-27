@@ -12,6 +12,7 @@ import "./Companies.css";
 import { FaPlus } from "react-icons/fa";
 import { Modal } from "@material-ui/core";
 import AddCompany from "./AddCompany";
+import { useStateValue } from "../../Context/StateProvider";
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -25,7 +26,7 @@ const useStyles = makeStyles({
     color: "white",
     background: "black",
     fontSize: 13,
-    // border:'none'
+    // border: "0.01 px",
   },
   tableBack: {
     backgroundColor: "black",
@@ -36,7 +37,7 @@ function Companies() {
   const classes = useStyles();
   const [companiesList, setCompaniesList] = useState([]);
   const baseUrl = "http://localhost:3001";
-  // const [modalStyle] = useState(getModalStyle);
+
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -45,15 +46,15 @@ function Companies() {
   const handleClose = () => {
     setOpen(false);
   };
+  const [{ admin }, dispatchAdmin] = useStateValue();
+
   //////////////////GET REQUEST TO SHOW/READ DATA//////////////
   const getCompanies = () => {
     Axios.get(`${baseUrl}/companies`).then((response) => {
       setCompaniesList(response.data);
     });
   };
-  const addCompany = () => {
-    alert("hey");
-  };
+
   useEffect(() => {
     getCompanies();
   });
@@ -108,19 +109,22 @@ function Companies() {
           </TableBody>
         </Table>
       </TableContainer>
-
-      <div class="float" onClick={handleOpen}>
-        <FaPlus className="my-float" />
-      </div>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        className="modal"
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-      >
-        <AddCompany />
-      </Modal>
+      {!admin || admin === "" ? null : (
+        <>
+          <div class="float" onClick={handleOpen}>
+            <FaPlus className="my-float" />
+          </div>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            className="modal"
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+          >
+            <AddCompany isOpen={handleOpen} />
+          </Modal>
+        </>
+      )}
     </div>
   );
 }

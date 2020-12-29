@@ -13,6 +13,11 @@ const db = mysql.createConnection({
   database: "pms",
 });
 
+/////////////////////S E R V E R   P O R T SETUP///////////////
+app.listen(3001, () => {
+  console.log("hurrayy , server running on port 3001");
+});
+
 //////////////////GET REQUEST TO SHOW/READ DATA FOR COMPANIES//////////////
 
 app.get("/companies", (req, res) => {
@@ -153,8 +158,4 @@ app.post("/addplacement", (req, res) => {
       }
     }
   );
-});
-/////////////////////S E R V E R   P O R T SETUP///////////////
-app.listen(3001, () => {
-  console.log("hurrayy , server running on port 3001");
 });

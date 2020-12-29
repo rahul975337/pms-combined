@@ -10,7 +10,7 @@ function AddCompany() {
   const [position, setPosition] = useState("");
   const baseUrl = "http://localhost:3001";
 
-  const addCompany = ({ handleOpen }) => {
+  const addCompany = () => {
     Axios.post(`${baseUrl}/addcompany`, {
       name: name,
       website: website,

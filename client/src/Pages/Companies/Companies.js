@@ -121,7 +121,7 @@ function Companies() {
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
           >
-            <AddCompany isOpen={handleOpen} />
+            <AddCompany />
           </Modal>
         </>
       )}

@@ -29,7 +29,7 @@ app.get("/companies", (req, res) => {
     }
   });
 });
-//////////////////GET REQUEST TO SHOW/READ DATA FOR PLACEMENTS//////////////
+//////////////////GET REQUEST TO SHOW/READ DATA FOR PLACEMENTS//////////
 
 app.get("/placements", (req, res) => {
   db.query("SELECT * FROM placements", (err, result) => {
@@ -40,7 +40,8 @@ app.get("/placements", (req, res) => {
     }
   });
 });
-/ /; //////////////////ROUTE FOR REGISTERATION /////////////
+/ /;
+//////////////////ROUTE FOR REGISTERATION /////////////
 app.post("/register", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -48,13 +49,13 @@ app.post("/register", (req, res) => {
   db.query(
     "INSERT INTO users (username,password) VALUES (?,?)",
     [username, password],
+
     (err, result) => {
       if (err) {
         console.log(err);
 
         res.send({ err: err });
         return;
-        // res.send({ message: "Wrong username/password combination" });
       }
       if (result) {
         res.send(result);

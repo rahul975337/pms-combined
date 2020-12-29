@@ -13,6 +13,7 @@ import { FaPlus } from "react-icons/fa";
 import { Modal } from "@material-ui/core";
 import AddCompany from "./AddCompany";
 import { useStateValue } from "../../Context/StateProvider";
+import CompanyDetails from "./CompanyDetails";
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -26,6 +27,7 @@ const useStyles = makeStyles({
     color: "white",
     background: "black",
     fontSize: 13,
+    cursor: "pointer",
     // border: "0.01 px",
   },
   tableBack: {
@@ -39,12 +41,19 @@ function Companies() {
   const baseUrl = "http://localhost:3001";
 
   const [open, setOpen] = useState(false);
+  const [openCompany, setOpenCompany] = useState(false);
   const handleOpen = () => {
     setOpen(true);
+  };
+  const handleOpenCompany = () => {
+    setOpenCompany(true);
   };
 
   const handleClose = () => {
     setOpen(false);
+  };
+  const handleCloseCompany = () => {
+    setOpenCompany(false);
   };
   const [{ admin }, dispatchAdmin] = useStateValue();
 
@@ -72,7 +81,7 @@ function Companies() {
                 Website
               </TableCell>
               <TableCell className={classes.tableHeading} align="left">
-                Salary
+                Package
               </TableCell>
               <TableCell className={classes.tableHeading} align="left">
                 Eligibility(CGPA)
@@ -83,29 +92,52 @@ function Companies() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {companiesList.map((company) => (
-              <TableRow key={company.id}>
-                <TableCell
-                  className={classes.tableData}
-                  component="th"
-                  scope="row"
-                >
-                  {company.name}
-                </TableCell>
-                <TableCell className={classes.tableData} align="left">
-                  {company.website}
-                </TableCell>
-                <TableCell className={classes.tableData} align="left">
-                  {company.salary}
-                </TableCell>
-                <TableCell className={classes.tableData} align="left">
-                  {company.eligibility}
-                </TableCell>
-                <TableCell className={classes.tableData} align="left">
-                  {company.position}
-                </TableCell>
-              </TableRow>
-            ))}
+            {companiesList.map((company) => {
+              return (
+                <TableRow key={company.id}>
+                  <TableCell
+                    className={classes.tableData}
+                    component="th"
+                    scope="row"
+                    onClick={handleOpenCompany}
+                  >
+                    {company.cname}
+                  </TableCell>
+                  {companiesList.map((item) => {
+                    companiesList[item] = company;
+                    return (
+                      <Modal
+                        open={openCompany}
+                        onClose={handleCloseCompany}
+                        className="modal"
+                        aria-labelledby="simple-modal-title"
+                        aria-describedby="simple-modal-description"
+                      >
+                        <CompanyDetails
+                          companyName={item.cname}
+                          description={company.cdescription}
+                          email={company.email}
+                          website={company.website}
+                          address={company.adrs}
+                        />
+                      </Modal>
+                    );
+                  })}
+                  <TableCell className={classes.tableData} align="left">
+                    {company.website}
+                  </TableCell>
+                  <TableCell className={classes.tableData} align="left">
+                    {company.package}
+                  </TableCell>
+                  <TableCell className={classes.tableData} align="left">
+                    {company.mincgpa}
+                  </TableCell>
+                  <TableCell className={classes.tableData} align="left">
+                    {company.position}
+                  </TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </TableContainer>

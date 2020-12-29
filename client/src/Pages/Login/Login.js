@@ -59,10 +59,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [adminUsername, setAdminUsername] = useState("");
-  const [adminPassword, setAdminPassword] = useState("");
+  const [usn, setUsn] = useState("");
+  const [pass, setPass] = useState("");
+  const [adminEmail, setAdminEmail] = useState("");
+  const [adminPass, setAdminPass] = useState("");
   const [usernameReg, setUsernameReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -78,8 +78,8 @@ function Login() {
 
   const login = () => {
     Axios.post(`${baseUrl}/login`, {
-      username: username,
-      password: password,
+      usn: usn,
+      pass: pass,
     }).then((response) => {
       if (response.data.message) {
         return toast("Invalid Username/Password", { type: "error" });
@@ -88,6 +88,9 @@ function Login() {
           type: actionTypes.SET_USER,
           user: response.data,
         });
+        console.log("====================================");
+        console.log(response.data);
+        console.log("====================================");
       }
     });
   };
@@ -96,10 +99,6 @@ function Login() {
       username: usernameReg,
       password: passwordReg,
     }).then((response) => {
-      // if (response.data) {
-      //   return toast(" Succesfully Registered", { type: "success" });
-      // }
-
       if (response.data.err) {
         return toast(" User already exists", { type: "error" });
       } else if (response.data.message) {
@@ -110,14 +109,13 @@ function Login() {
         console.log("====================================");
         return toast(" Succesfully Registered", { type: "success" });
       }
-      // return toast(" Succesfully Registered", { type: "success" });
     });
   };
 
   const adminLogin = () => {
     Axios.post(`${baseUrl}/admin`, {
-      username: username,
-      password: password,
+      email: adminEmail,
+      pass: adminPass,
     }).then((response) => {
       if (response.data.message) {
         return toast("Invalid Username/Password", { type: "error" });
@@ -148,23 +146,23 @@ function Login() {
       </Tabs>
       <TabPanel value={value} index={0}>
         <div className=" login-box login-box-1">
-          <h2>Login</h2>
+          <h2>Student Login</h2>
           <form>
             <div className="user-box">
               <input
                 type="text"
                 required="true"
                 name=""
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) => setUsn(e.target.value)}
               />
-              <label>Username</label>
+              <label>USN</label>
             </div>
             <div className="user-box">
               <input
                 type="password"
                 name=""
                 required="true"
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => setPass(e.target.value)}
               />
               <label>Password</label>
             </div>
@@ -219,16 +217,16 @@ function Login() {
                 type="text"
                 required="true"
                 name=""
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) => setAdminEmail(e.target.value)}
               />
-              <label>Username</label>
+              <label>Email</label>
             </div>
             <div className="user-box">
               <input
                 type="password"
                 name=""
                 required="true"
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => setAdminPass(e.target.value)}
               />
               <label>Password</label>
             </div>

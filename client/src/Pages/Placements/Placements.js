@@ -57,7 +57,7 @@ function Placements() {
 
   useEffect(() => {
     getPlacements();
-  });
+  }, [placementsList]);
   return (
     <div className="placements_page">
       <TableContainer component={Paper}>
@@ -68,11 +68,12 @@ function Placements() {
                 Student Name
               </TableCell>
               <TableCell className={classes.tableHeading} align="left">
-                Batch
+                USN
               </TableCell>
               <TableCell className={classes.tableHeading} align="left">
-                CGPA
+                Batch
               </TableCell>
+
               <TableCell className={classes.tableHeading} align="left">
                 Company
               </TableCell>
@@ -93,19 +94,19 @@ function Placements() {
                   component="th"
                   scope="row"
                 >
-                  {placement.name}
+                  {placement.sname}
+                </TableCell>
+                <TableCell className={classes.tableData} align="left">
+                  {placement.usn}
                 </TableCell>
                 <TableCell className={classes.tableData} align="left">
                   {placement.batch}
                 </TableCell>
                 <TableCell className={classes.tableData} align="left">
-                  {placement.cgpa}
+                  {placement.cname}
                 </TableCell>
                 <TableCell className={classes.tableData} align="left">
-                  {placement.company}
-                </TableCell>
-                <TableCell className={classes.tableData} align="left">
-                  {placement.salary}
+                  {placement.package}
                 </TableCell>
                 <TableCell className={classes.tableData} align="left">
                   {placement.position}

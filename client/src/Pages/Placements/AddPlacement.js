@@ -3,27 +3,30 @@ import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "./AddPlacement.css";
 function AddPlacement() {
-  const [name, setName] = useState("");
+  const [sname, setSname] = useState("");
+  const [usn, setUsn] = useState("");
   const [batch, setBatch] = useState("");
+  const [pdate, setPdate] = useState("");
   const [cgpa, setCgpa] = useState(0);
-  const [company, setCompany] = useState("");
+  const [cname, setCname] = useState("");
   const [salary, setSalary] = useState("");
   const [position, setPosition] = useState("");
   const baseUrl = "http://localhost:3001";
   const addPlacement = ({ handleOpen }) => {
     Axios.post(`${baseUrl}/addplacement`, {
-      name: name,
+      sname: sname,
+      usn: usn,
       batch: batch,
-      cgpa: cgpa,
-      company: company,
-      salary: salary,
+      cname: cname,
+      pdate: pdate,
+      package: salary,
       position: position,
     }).then((response) => {
       // if (response.data.message) {
       //   return toast(" User already exists", { type: "error" });
       // }
       if (response.data.err) {
-        return toast(" User already exists", { type: "error" });
+        return toast("Some error", { type: "error" });
       }
     });
   };
@@ -37,9 +40,18 @@ function AddPlacement() {
             type="text"
             required="true"
             name=""
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setSname(e.target.value)}
           />
           <label>Student Name</label>
+        </div>
+        <div className="add-placement-form">
+          <input
+            type="text"
+            required="true"
+            name=""
+            onChange={(e) => setUsn(e.target.value)}
+          />
+          <label>USN</label>
         </div>
         <div className="add-placement-form">
           <input
@@ -55,16 +67,7 @@ function AddPlacement() {
             type="text"
             required="true"
             name=""
-            onChange={(e) => setCgpa(e.target.value)}
-          />
-          <label>CGPA</label>
-        </div>
-        <div className="add-placement-form">
-          <input
-            type="text"
-            required="true"
-            name=""
-            onChange={(e) => setCompany(e.target.value)}
+            onChange={(e) => setCname(e.target.value)}
           />
           <label>Company</label>
         </div>
@@ -73,9 +76,18 @@ function AddPlacement() {
             type="text"
             name=""
             required="true"
+            onChange={(e) => setPdate(e.target.value)}
+          />
+          <label>Placed Date (YYYY-MM-DD)</label>
+        </div>
+        <div className="add-placement-form">
+          <input
+            type="text"
+            name=""
+            required="true"
             onChange={(e) => setSalary(e.target.value)}
           />
-          <label>Salary</label>
+          <label>Package</label>
         </div>
         <div className="add-placement-form">
           <input

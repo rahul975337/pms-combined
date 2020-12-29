@@ -2,9 +2,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  top: 50%;
   width: 400px;
-  padding: 40px;
+  padding: 50px;
   transform: translate(-50%, -50%);
   background: #323232;
   box-sizing: border-box;
@@ -13,7 +12,7 @@
 }
 
 .add-company-box h2 {
-  margin: 0 0 30px;
+  margin: 0 0 20px;
   padding: 0;
   color: var(--white);
   text-align: center;
@@ -26,9 +25,9 @@
 .add-company-box .add-company-form input {
   width: 100%;
   padding: 10px 0;
-  font-size: 16px;
+  font-size: 13px;
   color: var(--white);
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   border: none;
   border-bottom: 1px solid var(--white);
   outline: none;

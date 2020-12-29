@@ -3,19 +3,27 @@ import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "./AddCompany.css";
 function AddCompany() {
-  const [name, setName] = useState("");
+  const [cname, setCname] = useState("");
+  const [cdescription, setCdescription] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState(0);
   const [website, seWebsite] = useState("");
-  const [salary, setSalary] = useState("");
-  const [eligibility, setEligibility] = useState(0);
+  const [adrs, setAdrs] = useState("");
+  const [salary, setSalary] = useState(0);
+  const [mincgpa, setMinCgpa] = useState(0);
   const [position, setPosition] = useState("");
   const baseUrl = "http://localhost:3001";
 
   const addCompany = () => {
     Axios.post(`${baseUrl}/addcompany`, {
-      name: name,
+      cname: cname,
+      cdescription: cdescription,
+      email: email,
+      phone: phone,
       website: website,
-      salary: salary,
-      eligibility: eligibility,
+      adrs: adrs,
+      package: salary,
+      mincgpa: mincgpa,
       position: position,
     }).then((response) => {
       // if (response.data.message) {
@@ -36,9 +44,36 @@ function AddCompany() {
             type="text"
             required="true"
             name=""
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setCname(e.target.value)}
           />
           <label>Company Name</label>
+        </div>
+        <div className="add-company-form">
+          <input
+            type="text"
+            required="true"
+            name=""
+            onChange={(e) => setCdescription(e.target.value)}
+          />
+          <label>Company Info</label>
+        </div>
+        <div className="add-company-form">
+          <input
+            type="text"
+            required="true"
+            name=""
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label>Email</label>
+        </div>
+        <div className="add-company-form">
+          <input
+            type="text"
+            required="true"
+            name=""
+            onChange={(e) => setPhone(e.target.value)}
+          />
+          <label>Phone</label>
         </div>
         <div className="add-company-form">
           <input
@@ -54,18 +89,29 @@ function AddCompany() {
             type="text"
             required="true"
             name=""
-            onChange={(e) => setSalary(e.target.value)}
+            onChange={(e) => setAdrs(e.target.value)}
           />
-          <label>Salary</label>
+          <label>Address</label>
         </div>
         <div className="add-company-form">
           <input
             type="text"
             required="true"
             name=""
-            onChange={(e) => setEligibility(e.target.value)}
+            onChange={(e) => setSalary(e.target.value)}
           />
-          <label>Eligibility</label>
+          <label>Package</label>
+        </div>
+        <div className="add-company-form">
+          <input
+            type="text"
+            required="true"
+            name=""
+            onChange={(e) => {
+              setMinCgpa(e.target.value);
+            }}
+          />
+          <label>Eligibility (CGPA)</label>
         </div>
         <div className="add-company-form">
           <input

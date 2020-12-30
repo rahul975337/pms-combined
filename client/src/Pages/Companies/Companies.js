@@ -103,26 +103,26 @@ function Companies() {
                   >
                     {company.cname}
                   </TableCell>
-                  {companiesList.map((item) => {
+                  {/* {companiesList.map((item) => {
                     companiesList[item] = company;
-                    return (
-                      <Modal
-                        open={openCompany}
-                        onClose={handleCloseCompany}
-                        className="modal"
-                        aria-labelledby="simple-modal-title"
-                        aria-describedby="simple-modal-description"
-                      >
-                        <CompanyDetails
-                          companyName={item.cname}
-                          description={company.cdescription}
-                          email={company.email}
-                          website={company.website}
-                          address={company.adrs}
-                        />
-                      </Modal>
-                    );
-                  })}
+                    return ( */}
+                  <Modal
+                    open={openCompany}
+                    onClose={handleCloseCompany}
+                    className="modal"
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                  >
+                    <CompanyDetails
+                      companyName={company.cname}
+                      description={company.cdescription}
+                      email={company.email}
+                      website={company.website}
+                      address={company.adrs}
+                    />
+                  </Modal>
+                  {/* );
+                  })} */}
                   <TableCell className={classes.tableData} align="left">
                     {company.website}
                   </TableCell>

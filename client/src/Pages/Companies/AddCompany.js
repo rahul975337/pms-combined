@@ -31,7 +31,7 @@ function AddCompany() {
       // }
       if (response.data.err) {
         return toast(" User already exists", { type: "error" });
-      }
+      } else return toast("Successfully Added", { type: "success" });
     });
   };
   return (
@@ -122,7 +122,7 @@ function AddCompany() {
           />
           <label>Position</label>
         </div>
-        <btn onClick={addCompany}>Submit</btn>
+        <btn onClick={addCompany}>Add</btn>
       </form>
     </div>
   );

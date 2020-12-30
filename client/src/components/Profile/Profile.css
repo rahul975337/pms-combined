@@ -1,0 +1,85 @@
+.add-profile-box {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  /* right: 5%; */
+  top: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: #323232;
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+.add-profile-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: var(--white);
+  text-align: center;
+}
+
+.add-profile-box .add-placement-form {
+  position: relative;
+}
+
+.add-profile-box .add-placement-form input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: var(--white);
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid var(--white);
+  outline: none;
+  background: transparent;
+}
+.add-profile-box .add-placement-form label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: var(--white);
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.add-profile-box .add-placement-form input:focus ~ label,
+.add-profile-box .add-placement-form input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: var(--red);
+  font-size: 12px;
+}
+p {
+  padding: 10px;
+}
+.add-profile-box btn {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: var(--white);
+  background: var(--red);
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: 0.5s;
+  margin-top: 40px;
+  outline: none;
+  letter-spacing: 4px;
+  margin-right: 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.add-profile-box btn:hover {
+  background: var(--red);
+  color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 0 5px var(--red), 0 0 25pxvar (--red), 0 0 50px var(--red),
+    0 0 100px var(--red);
+  cursor: pointer;
+}

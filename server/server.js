@@ -18,6 +18,17 @@ app.listen(3001, () => {
   console.log("hurrayy , server running on port 3001");
 });
 
+//////////////////GET REQUEST TO SHOW/READ DATA FOR STUDENTS//////////////
+
+app.get("/students", (req, res) => {
+  db.query("SELECT * FROM studentdetails", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
 //////////////////GET REQUEST TO SHOW/READ DATA FOR COMPANIES//////////////
 
 app.get("/companies", (req, res) => {
@@ -43,12 +54,12 @@ app.get("/placements", (req, res) => {
 // ***************************************************************//////////
 //////////////////ROUTE FOR REGISTERATION /////////////
 app.post("/register", (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
+  const usn = req.body.usn;
+  const pass = req.body.pass;
 
   db.query(
-    "INSERT INTO users (username,password) VALUES (?,?)",
-    [username, password],
+    "INSERT INTO slogin (usn,pass) VALUES (?,?)",
+    [usn, pass],
 
     (err, result) => {
       if (err) {
@@ -171,6 +182,63 @@ app.post("/addplacement", (req, res) => {
         res.send(result);
       } else {
         res.send({ message: "already exists" });
+      }
+    }
+  );
+});
+
+/////////////////////ROUTE FOR ADD STUDENTS /////////////
+app.post("/addstudents", (req, res) => {
+  const sname = req.body.sname;
+  const usn = req.body.usn;
+  const mobile = req.body.mobile;
+  const email = req.body.email;
+  const dob = req.body.dob;
+  const branch = req.body.branch;
+  const cgpa = req.body.cgpa;
+
+  db.query(
+    "INSERT INTO studentdetails (sname,usn,mobile,email,dob,branch,cgpa) VALUES (?,?,?,?,?,?,?)",
+    [sname, usn, mobile, email, dob, branch, cgpa],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+        res.send({ err: err });
+        // res.send({ message: "Wrong username/password combination" });
+      }
+      if (result.length > 0) {
+        res.send(result);
+      } else {
+        res.send({ message: "already exists" });
+      }
+    }
+  );
+});
+//////////////////GET REQUEST TO SHOW/READ DATA FOR UserProfile//////////
+
+app.get("/profile", (req, res) => {
+  db.query(
+    "SELECT sl.usn,sd.sname,sd.mobile,sd.email,sd.dob,sd.branch,sd.cgpa FROM slogin AS sl INNER JOIN studentdetails AS sd ON sl.usn = sd.usn;",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+//////////////////GET REQUEST TO SHOW/READ DATA FOR AdminProfile//////////
+
+app.get("/adminprofile", (req, res) => {
+  db.query(
+    "SELECT al.email,ad.aname,ad.phone,ad.depname FROM alogin AS al INNER JOIN admindetails AS ad ON al.email = ad.email;",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
       }
     }
   );

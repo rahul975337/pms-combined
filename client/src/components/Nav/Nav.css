@@ -47,3 +47,18 @@
 .navbar_link:active {
   color: var(--red);
 }
+
+.my-float {
+  margin-top: 22px;
+}
+.modal {
+  color: white;
+  /* background: red; */
+  height: 50%;
+  width: 50%;
+  border-radius: 20px;
+  padding: 20px;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+}

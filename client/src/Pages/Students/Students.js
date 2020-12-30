@@ -8,13 +8,11 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Axios from "axios";
-import "./Companies.css";
 import { FaPlus } from "react-icons/fa";
-import { Modal } from "@material-ui/core";
-import AddCompany from "./AddCompany";
 import { useStateValue } from "../../Context/StateProvider";
-import CompanyDetails from "./CompanyDetails";
-import ModalComponent from "./ModalComponent";
+import { Modal } from "@material-ui/core";
+import AddStudent from "./AddStudent";
+import "./Students.css";
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -28,126 +26,96 @@ const useStyles = makeStyles({
     color: "white",
     background: "black",
     fontSize: 13,
-    cursor: "pointer",
-    // border: "0.01 px",
   },
   tableBack: {
     backgroundColor: "black",
   },
 });
 
-function Companies() {
+function Students() {
   const classes = useStyles();
-  const [companiesList, setCompaniesList] = useState([]);
+  const [studentsList, setStudentsList] = useState([]);
   const baseUrl = "http://localhost:3001";
 
   const [open, setOpen] = useState(false);
-  const [openCompany, setOpenCompany] = useState(false);
   const handleOpen = () => {
     setOpen(true);
-  };
-  const handleOpenCompany = () => {
-    setOpenCompany(true);
   };
 
   const handleClose = () => {
     setOpen(false);
   };
-  const handleCloseCompany = () => {
-    setOpenCompany(false);
-  };
   const [{ admin }, dispatchAdmin] = useStateValue();
 
   //////////////////GET REQUEST TO SHOW/READ DATA//////////////
-  const getCompanies = () => {
-    Axios.get(`${baseUrl}/companies`).then((response) => {
-      setCompaniesList(response.data);
+  const getStudents = () => {
+    Axios.get(`${baseUrl}/students`).then((response) => {
+      setStudentsList(response.data);
     });
   };
 
   useEffect(() => {
-    getCompanies();
+    getStudents();
   });
-
   return (
-    <div className="companies_page">
+    <div className="placements_page">
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell className={classes.tableHeading}>
-                Company Name
+                Student Name
               </TableCell>
               <TableCell className={classes.tableHeading} align="left">
-                Website
+                USN
               </TableCell>
               <TableCell className={classes.tableHeading} align="left">
-                Package
+                Phone
+              </TableCell>
+
+              <TableCell className={classes.tableHeading} align="left">
+                Email
               </TableCell>
               <TableCell className={classes.tableHeading} align="left">
-                Eligibility(CGPA)
+                DOB(YYYY-MM-DD)
+              </TableCell>
+
+              <TableCell className={classes.tableHeading} align="left">
+                Branch
               </TableCell>
               <TableCell className={classes.tableHeading} align="left">
-                Position
+                CGPA
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {companiesList.map((company, key) => {
-              key = company.id;
+            {studentsList.map((student) => {
               return (
-                <TableRow key={key}>
+                <TableRow key={student.stid}>
                   <TableCell
                     className={classes.tableData}
                     component="th"
                     scope="row"
-                    // onClick={handleOpenCompany}
                   >
-                    {company.cname}
-                  </TableCell>
-                  {/* <ModalComponent
-                    openCompany={openCompany}
-                    handleCloseCompany={handleCloseCompany}
-                    cname={company.cname}
-                    cdescription={company.cdescription}
-                    email={company.email}
-                    website={company.website}
-                    adrs={company.adrs}
-                  /> */}
-                  {/* {companiesList.map((item) => {
-                    companiesList[item] = company;
-                    return ( */}
-                  {/* <Modal
-                    open={openCompany}
-                    onClose={handleCloseCompany}
-                    className="modal"
-                    aria-labelledby="simple-modal-title"
-                    aria-describedby="simple-modal-description"
-                  > */}
-                  {/* {companiesList.map((item) => {
-                      companiesList[item] = company;
-                      return ( */}
-                  {/* <CompanyDetails
-                      currCompanyName={company.cname}
-                      handleCloseCompany={handleCloseCompany}
-                      openCompany={openCompany}
-                    /> */}
-                  {/* );
-                    })} */}
-                  {/* </Modal> */}
-                  {/* );
-                  })} */}
-                  <TableCell className={classes.tableData} align="left">
-                    {company.website}
+                    {student.sname}
                   </TableCell>
                   <TableCell className={classes.tableData} align="left">
-                    {company.package}
+                    {student.usn}
                   </TableCell>
                   <TableCell className={classes.tableData} align="left">
-                    {company.mincgpa}
+                    {student.mobile}
                   </TableCell>
                   <TableCell className={classes.tableData} align="left">
-                    {company.position}
+                    {student.email}
+                  </TableCell>
+                  <TableCell className={classes.tableData} align="left">
+                    {student.dob.substring(0, 10)}
+                  </TableCell>
+                  <TableCell className={classes.tableData} align="left">
+                    {student.branch}
+                  </TableCell>
+                  <TableCell className={classes.tableData} align="left">
+                    {student.cgpa}
                   </TableCell>
                 </TableRow>
               );
@@ -167,7 +135,7 @@ function Companies() {
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
           >
-            <AddCompany />
+            <AddStudent isOpen={handleOpen} />
           </Modal>
         </>
       )}
@@ -175,4 +143,4 @@ function Companies() {
   );
 }
 
-export default Companies;
+export default Students;

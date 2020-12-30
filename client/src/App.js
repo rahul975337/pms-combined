@@ -6,6 +6,7 @@ import Home from "./Pages/Home/Home";
 import Companies from "./Pages/Companies/Companies";
 import Placements from "./Pages/Placements/Placements";
 import { useStateValue } from "./Context/StateProvider";
+import Students from "./Pages/Students/Students";
 
 function App() {
   const [{ user }, dispatchUser] = useStateValue();
@@ -28,6 +29,9 @@ function App() {
             </Route>
             <Route exact path="/placements">
               <Placements />
+            </Route>
+            <Route exact path="/students">
+              <Students />
             </Route>
             <Route exact path="/login">
               <Login />

@@ -96,8 +96,8 @@ function Login() {
   };
   const register = () => {
     Axios.post(`${baseUrl}/register`, {
-      username: usernameReg,
-      password: passwordReg,
+      usn: usernameReg,
+      pass: passwordReg,
     }).then((response) => {
       if (response.data.err) {
         return toast(" User already exists", { type: "error" });

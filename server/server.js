@@ -2,8 +2,7 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
-////////////
-//cors helps in sending crossplatform information lije from frontend to backend
+//C O R S     helps in sending crossplatform information lije from frontend to backend
 app.use(cors());
 app.use(express.json());
 const db = mysql.createConnection({

@@ -187,7 +187,7 @@ function Login() {
                 required="true"
                 onChange={(e) => setUsernameReg(e.target.value)}
               />
-              <label>Username</label>
+              <label>USN</label>
             </div>
             <div className="user-box">
               <input

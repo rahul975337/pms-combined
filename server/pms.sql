@@ -70,6 +70,7 @@ CREATE TABLE updateddrive (
   position varchar(50) NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (usn) REFERENCES studentdetails(usn) ON DELETE CASCADE
+  FOREIGN KEY (cname) REFERENCES companydetails(cname) ON DELETE CASCADE
 );
 
 

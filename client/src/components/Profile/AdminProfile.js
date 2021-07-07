@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
 import { useStateValue } from "../../Context/StateProvider";
 import "./Profile.css";
 function AdminProfile({ companyName, description, email, website, address }) {
   const baseUrl = "http://localhost:3001";
   const [profiles, setProfiles] = useState([]);
   const [currPerson, setCurrPerson] = useState("");
+  /* eslint-disable */
   const [admin, dispatchAdmin] = useStateValue();
 
   const getProfiles = () => {

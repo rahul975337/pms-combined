@@ -1,6 +1,6 @@
+/* eslint-disable */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
 import { useStateValue } from "../../Context/StateProvider";
 import "./Profile.css";
 function UserProfile({ companyName, description, email, website, address }) {

@@ -7,7 +7,6 @@ function AddPlacement() {
   const [usn, setUsn] = useState("");
   const [batch, setBatch] = useState("");
   const [pdate, setPdate] = useState("");
-  const [cgpa, setCgpa] = useState(0);
   const [cname, setCname] = useState("");
   const [salary, setSalary] = useState("");
   const [position, setPosition] = useState("");

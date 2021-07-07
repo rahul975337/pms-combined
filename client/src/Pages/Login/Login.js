@@ -65,7 +65,7 @@ function Login() {
   const [adminPass, setAdminPass] = useState("");
   const [usernameReg, setUsernameReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  /* eslint-disable */
   const baseUrl = "http://localhost:3001";
   const [{ userState }, dispatchUser] = useStateValue();
   const [{ adminState }, dispatchAdmin] = useStateValue();

@@ -1,6 +1,6 @@
 import { Avatar, Modal } from "@material-ui/core";
 import React, { useState } from "react";
-import { FaPlus, FaUniversity } from "react-icons/fa";
+import {  FaUniversity } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { actionTypes } from "../../Context/reducer";
 import { useStateValue } from "../../Context/StateProvider";
@@ -9,6 +9,7 @@ import UserProfile from "../Profile/UserProfile";
 import "./Nav.css";
 
 function Nav() {
+  /* eslint-disable */
   const [{ user }, dispatchUser] = useStateValue();
   const [{ admin }, dispatchAdmin] = useStateValue();
   const [open, setOpen] = useState(false);

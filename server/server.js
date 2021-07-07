@@ -9,12 +9,13 @@ const db = mysql.createConnection({
   user: "root",
   host: "localhost",
   password: "12345",
-  database: "pms1",
+  database: "pms",
 });
 
 /////////////////////S E R V E R   P O R T SETUP///////////////
-app.listen(3001, () => {
-  console.log("hurrayy , server running on port 3001");
+const PORT = 3001;
+app.listen(PORT, () => {
+  console.log(`hurrayy , server running on port ${PORT}`);
 });
 
 //////////////////GET REQUEST TO SHOW/READ DATA FOR STUDENTS//////////////

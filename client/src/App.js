@@ -1,13 +1,13 @@
-import "./App.css";
-import Login from "./Pages/Login/Login";
-import Nav from "./components/Nav/Nav";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./Pages/Home/Home";
-import Companies from "./Pages/Companies/Companies";
-import Placements from "./Pages/Placements/Placements";
-import { useStateValue } from "./Context/StateProvider";
-import Students from "./Pages/Students/Students";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+import Nav from "./components/Nav/Nav";
+import { useStateValue } from "./Context/StateProvider";
+import Companies from "./Pages/Companies/Companies";
+import Home from "./Pages/Home/Home";
+import Login from "./Pages/Login/Login";
+import Placements from "./Pages/Placements/Placements";
+import Students from "./Pages/Students/Students";
+/* eslint-disable */
 function App() {
   const [{ user }, dispatchUser] = useStateValue();
   const [{ admin }, dispatchAdmin] = useStateValue();

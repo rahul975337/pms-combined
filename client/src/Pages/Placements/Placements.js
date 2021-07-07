@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { Modal } from "@material-ui/core";
+import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -6,13 +7,12 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
 import Axios from "axios";
-import "./Placements.css";
+import React, { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { useStateValue } from "../../Context/StateProvider";
-import { Modal } from "@material-ui/core";
 import AddPlacement from "./AddPlacement";
+import "./Placements.css";
 
 const useStyles = makeStyles({
   table: {
@@ -46,6 +46,7 @@ function Placements() {
   const handleClose = () => {
     setOpen(false);
   };
+   /* eslint-disable */
   const [{ admin }, dispatchAdmin] = useStateValue();
 
   //////////////////GET REQUEST TO SHOW/READ DATA//////////////

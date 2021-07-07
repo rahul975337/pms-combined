@@ -45,6 +45,7 @@ function Students() {
   const handleClose = () => {
     setOpen(false);
   };
+  /* eslint-disable */
   const [{ admin }, dispatchAdmin] = useStateValue();
 
   //////////////////GET REQUEST TO SHOW/READ DATA//////////////

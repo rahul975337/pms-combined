@@ -1,6 +1,6 @@
 CREATE TABLE studentdetails (
   stid int NOT NULL AUTO_INCREMENT,
-  sname varchar(30) NOT NULL,
+  sname varchar(30) NOT NULL UNIQUE,
   usn varchar(12) NOT NULL UNIQUE,
   mobile bigint(10) NOT NULL UNIQUE,
   email varchar(30) NOT NULL UNIQUE ,
@@ -26,7 +26,7 @@ CREATE TABLE admindetails (
   aid int NOT NULL AUTO_INCREMENT,
   aname varchar(30)  NOT NULL,
   email varchar(30) NOT NULL UNIQUE,
-  phone bigint(10) NOT NULL UNIQUE,
+  phone bigint NOT NULL UNIQUE,
   depname varchar(10) NOT NULL,
   PRIMARY KEY (aid)
 );
@@ -69,11 +69,9 @@ CREATE TABLE updateddrive (
   package varchar(30) NOT NULL,
   position varchar(50) NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (usn) REFERENCES studentdetails(usn) ON DELETE CASCADE
+  FOREIGN KEY (usn) REFERENCES studentdetails(usn) ON DELETE CASCADE,
   FOREIGN KEY (cname) REFERENCES companydetails(cname) ON DELETE CASCADE
 );
-
-
 
 INSERT INTO studentdetails (sname, usn, mobile, email, dob, branch, cgpa) VALUES
 ( 'Aarushi Rathore', '1js18is005', 9149256646, 'aarushirathore5@gmai', '1998-11-18', 'ISE', 9.1),

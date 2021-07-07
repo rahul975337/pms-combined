@@ -2,19 +2,14 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
+const db = require("./config/db");
 //C O R S     helps in sending crossplatform information lije from frontend to backend
 app.use(cors());
 app.use(express.json());
-const db = mysql.createConnection({
-  user: "root",
-  host: "localhost",
-  password: "12345",
-  database: "pms",
-});
 
 /////////////////////S E R V E R   P O R T SETUP///////////////
 const PORT = 3001;
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
   console.log(`hurrayy , server running on port ${PORT}`);
 });
 

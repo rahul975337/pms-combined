@@ -1,8 +1,11 @@
+drop schema pms;
+create database pms;
+use pms;
 CREATE TABLE studentdetails (
   stid int NOT NULL AUTO_INCREMENT,
-  sname varchar(30) NOT NULL UNIQUE,
+  sname varchar(30) NOT NULL ,
   usn varchar(12) NOT NULL UNIQUE,
-  mobile bigint(10) NOT NULL UNIQUE,
+  mobile bigint NOT NULL UNIQUE,
   email varchar(30) NOT NULL UNIQUE ,
   dob date NOT NULL,
   branch varchar(10) NOT NULL,
@@ -45,10 +48,10 @@ CREATE TABLE alogin (
 
 CREATE TABLE companydetails (
   id int NOT NULL AUTO_INCREMENT,
-  cname varchar(30) NOT NULL,
+  cname varchar(30) NOT NULL UNIQUE,
   cdescription  varchar(300) NOT NULL,
   email varchar(30) NOT NULL UNIQUE,
-  phone bigint(10) NOT NULL UNIQUE,
+  phone bigint NOT NULL UNIQUE,
   website varchar(30) NOT NULL,
   adrs varchar(300) NOT NULL,
   package varchar(30) NOT NULL,
